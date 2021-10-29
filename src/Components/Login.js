@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import * as YUP from "yup";
-import { Link, useHistroy } from "react-router-dom";
+
 import { Card, Button } from "react-bootstrap";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Formik, Field, ErrorMessage, Form } from "formik";
 import { AppContext } from "../App";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 function Login() {
-  const histroy = useHistroy();
+  const histroy = useHistory();
   const [log, setLog] = useContext(AppContext);
 
   //send login
@@ -28,7 +30,63 @@ function Login() {
           <Card.Header className="text-center">
             <h4 className="text-dark">Login</h4>
           </Card.Header>
-          <Button color="primary">Come</Button>
+          <Card.Body>
+            <Formik
+              initialValues={{
+                email: "",
+                password: "",
+              }}
+              validationSchema={signInSchema}
+              onSubmit={(values) => {
+                console.log(values);
+                // // let reset = sendLogin(values);
+                // if (reset) console.log(log);
+                // setLog(true);
+                // histroy.push("/protected");
+              }}
+            >
+              {() => {
+                return (
+                  <Form>
+                    <div className="form-group mb-3">
+                      <label for="email">Email</label>
+                      <Field
+                        className="form-control link"
+                        id="email"
+                        type="email"
+                        name="email"
+                        component="input"
+                      />
+                      <div className="error">
+                        <ErrorMessage name="email" />
+                      </div>
+                    </div>
+                    <div className="form-group mb-3">
+                      <label for="password">Password</label>
+                      <Link to="/forgot">
+                        <p className="forgotpass">forgot password?</p>
+                      </Link>
+                      <Field
+                        className="form-control inputfield"
+                        id="password"
+                        type="password"
+                        name="password"
+                        component="input"
+                      />
+                      <div className="error">
+                        <ErrorMessage name="password" />
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-center">
+                      <Button type="submit" variant="primary">
+                        Log In
+                      </Button>
+                    </div>
+                  </Form>
+                );
+              }}
+            </Formik>
+          </Card.Body>
         </Card>
       </div>
     </>

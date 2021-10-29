@@ -30,7 +30,6 @@ function App() {
           </AppContext.Provider>
         </Switch>
       </Router>
-      <h3>hello</h3>
     </div>
   );
 }
