@@ -86,6 +86,11 @@ function Login() {
                 );
               }}
             </Formik>
+            <div className="mt-3">
+              <Link to="/register" className="ac link">
+                New Here? Create Account
+              </Link>
+            </div>
           </Card.Body>
         </Card>
       </div>
