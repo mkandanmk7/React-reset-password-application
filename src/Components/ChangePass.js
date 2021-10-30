@@ -18,7 +18,7 @@ function ChangePass() {
   //handleChange()
   const handleChange = ({ target: { name, value } }) => {
     if (name === "password") setPassword(value);
-    if (name === "password1") setPassword(value);
+    if (name === "password1") setPassword1(value);
   };
 
   //handle submit
@@ -34,9 +34,12 @@ function ChangePass() {
       return false;
     }
     try {
-      const res = await axios.post(``, {
-        password: password,
-      });
+      const res = await axios.post(
+        `https://reset-password-muthu.herokuapp.com/resetpassword/${id}/${token}`,
+        {
+          password: password,
+        }
+      );
       console.log(res);
       setPassword("");
       setPassword1("");
@@ -80,6 +83,9 @@ function ChangePass() {
               <Button type="submit" onClick={handleSubmit}>
                 Change
               </Button>
+              <div className="text-center">
+                <p>{info}</p>
+              </div>
             </form>
           </Card.Body>
         </Card>
