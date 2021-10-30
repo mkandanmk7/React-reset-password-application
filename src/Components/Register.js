@@ -1,17 +1,35 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
+import axios from "axios";
 import * as YUP from "yup";
 
 function Register() {
   const [info, setInfo] = useState("");
 
-  const createAccount = async () => {
-    console.log("acc created ");
+  const createAccount = async (values) => {
+    try {
+      console.log("acc created ");
+      const response = await axios.post(
+        "https://nodejs-reset-password.herokuapp.com/users/register",
+        {
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        }
+      );
+      console.log(response);
+      setInfo(response.data);
+      return true;
+    } catch (err) {
+      console.log(err.response.data);
+      setInfo(err.response.data.Error);
+      return false;
+    }
   };
 
   const signInSchema = YUP.object().shape({
-    username: YUP.string().required("Please enter username"),
+    name: YUP.string().required("Please enter name"),
     email: YUP.string().email().required("Please Enter Your Email"),
     password: YUP.string()
       .min(6, "password should be greather than 5 characters")
@@ -28,7 +46,7 @@ function Register() {
           <Card.Body>
             <Formik
               initialValues={{
-                username: "",
+                name: "",
                 email: "",
                 password: "",
               }}
@@ -44,17 +62,17 @@ function Register() {
                   <Form>
                     <div className="form-group mb-3">
                       <label className="text-start" for="email">
-                        User Name
+                        Name
                       </label>
                       <Field
                         className="form-control link"
-                        id="username"
+                        id="name"
                         type="text"
-                        name="username"
+                        name="name"
                         component="input"
                       />
                       <div className="error">
-                        <ErrorMessage name="username" />{" "}
+                        <ErrorMessage name="name" />
                       </div>
                     </div>
 

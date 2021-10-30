@@ -6,12 +6,27 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 import { AppContext } from "../App";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
   const histroy = useHistory();
   const [log, setLog] = useContext(AppContext);
 
   //send login
+  const sendLogin = async (values) => {
+    const response = await axios.post(
+      "https://nodejs-reset-password.herokuapp.com/users/login",
+      {
+        email: values.email,
+        password: values.password,
+      }
+    );
+    console.log(response);
+    if (response.status === 200) {
+      window.localStorage.setItem("auth-token", response.data);
+      return true;
+    } else return false;
+  };
 
   // signin Schema using yup
 
@@ -39,10 +54,11 @@ function Login() {
               validationSchema={signInSchema}
               onSubmit={(values) => {
                 console.log(values);
-                // // let reset = sendLogin(values);
-                // if (reset) console.log(log);
-                // setLog(true);
-                // histroy.push("/protected");
+                let reset = sendLogin(values); //if status 200 returns true; else false
+
+                if (reset) console.log(log);
+                setLog(true);
+                histroy.push("/protected");
               }}
             >
               {() => {
