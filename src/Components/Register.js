@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import axios from "axios";
 import * as YUP from "yup";
+import { NavLink } from "react-router-dom";
+import "./Css/Register.css";
 
 function Register() {
   const [info, setInfo] = useState("");
@@ -107,6 +109,12 @@ function Register() {
                     <div className="d-flex justify-content-center">
                       <Button type="submit" variant="success">
                         Create
+                      </Button>
+                      <Button className="mx-2 " type="submit" variant="success">
+                        <NavLink className="loginLink" to="/login">
+                          {" "}
+                          Login
+                        </NavLink>
                       </Button>
                     </div>
                   </Form>
