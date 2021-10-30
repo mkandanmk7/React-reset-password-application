@@ -1,10 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import * as YUP from "yup";
 
 function Register() {
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState("");
 
   const createAccount = async () => {
     console.log("acc created ");
@@ -43,7 +43,9 @@ function Register() {
                 return (
                   <Form>
                     <div className="form-group mb-3">
-                      <label for="email">User Name</label>
+                      <label className="text-start" for="email">
+                        User Name
+                      </label>
                       <Field
                         className="form-control link"
                         id="username"
@@ -84,10 +86,18 @@ function Register() {
                         <ErrorMessage name="password" />
                       </div>
                     </div>
+                    <div className="d-flex justify-content-center">
+                      <Button type="submit" variant="success">
+                        Create
+                      </Button>
+                    </div>
                   </Form>
                 );
               }}
             </Formik>
+            <div className="text-success">
+              <h3>{info}</h3>
+            </div>
           </Card.Body>
         </Card>
       </div>

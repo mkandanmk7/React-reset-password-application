@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { AppContext } from "../App";
 
 function Protected() {
+  const [log] = useContext(AppContext);
+
   return (
-    <div>
-      <h2>Proteced</h2>
-    </div>
+    <>
+      {log ? (
+        <div className="container d-flex justify-content-center">
+          <div className="row">
+            <div className="col">
+              <h1>Welcome to Protected Page</h1>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="d-flex justify-content-center align-items-center ">
+            <p>Please Login to view this page</p>
+            <br />
+            <Link to="/login">
+              <Button variant="primary">Login</Button>
+            </Link>
+          </div>
+        </>
+      )}
+    </>
   );
 }
 

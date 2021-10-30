@@ -63,9 +63,7 @@ function Login() {
                     </div>
                     <div className="form-group mb-3">
                       <label for="password">Password</label>
-                      <Link to="/forgot">
-                        <p className="forgotpass">forgot password?</p>
-                      </Link>
+
                       <Field
                         className="form-control inputfield"
                         id="password"
@@ -77,6 +75,7 @@ function Login() {
                         <ErrorMessage name="password" />
                       </div>
                     </div>
+
                     <div className="d-flex justify-content-center">
                       <Button type="submit" variant="primary">
                         Log In
@@ -86,7 +85,10 @@ function Login() {
                 );
               }}
             </Formik>
-            <div className="mt-3">
+            <div className="d-flex mt-3 justify-content-center">
+              <Link to="/forgot">
+                <p className="forgotpass mx-2">forgot password?</p>
+              </Link>
               <Link to="/register" className="ac link">
                 New Here? Create Account
               </Link>
