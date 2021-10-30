@@ -13,8 +13,9 @@ function ForgotPass() {
   //handleChange
 
   const handleChange = ({ target: { value } }) => {
-    console.log(value);
+    // console.log(value);
     setEmail(value);
+    setInfo("");
   };
 
   //submit ()
@@ -23,7 +24,10 @@ function ForgotPass() {
     console.log(email);
     if (email.length === 0) setErr("please Enter mail ");
     try {
-      const res = await axios.post("", { email: email });
+      const res = await axios.post(
+        "https://nodejs-reset-password.herokuapp.com/resetpassword",
+        { email: email }
+      );
       console.log(res);
 
       setEmail("");
@@ -60,6 +64,7 @@ function ForgotPass() {
                   Send Email
                 </Button>
               </div>
+              <p className="text-center">{info}</p>
             </form>
           </Card.Body>
         </Card>
