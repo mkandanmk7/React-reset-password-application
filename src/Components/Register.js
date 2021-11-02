@@ -63,7 +63,7 @@ function Register() {
                 return (
                   <Form>
                     <div className="form-group mb-3">
-                      <label className="text-start" for="email">
+                      <label className="text-start" htmlFor="email">
                         Name
                       </label>
                       <Field
@@ -80,7 +80,7 @@ function Register() {
 
                     {/* email */}
                     <div className="form-group mb-3">
-                      <label for="email">Email</label>
+                      <label htmlFor="email">Email</label>
                       <Field
                         class="form-control link"
                         id="email"
@@ -94,7 +94,7 @@ function Register() {
                     </div>
                     {/* password */}
                     <div className="form-group mb-3">
-                      <label for="password">Password</label>
+                      <label htmlFor="password">Password</label>
                       <Field
                         className="form-control link"
                         component="input"

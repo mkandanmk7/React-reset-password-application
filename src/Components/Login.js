@@ -76,7 +76,7 @@ function Login() {
                 return (
                   <Form>
                     <div className="form-group mb-3">
-                      <label for="email">Email</label>
+                      <label htmlFor="email">Email</label>
                       <Field
                         className="form-control link"
                         id="email"
@@ -89,7 +89,7 @@ function Login() {
                       </div>
                     </div>
                     <div className="form-group mb-3">
-                      <label for="password">Password</label>
+                      <label htmlFor="password">Password</label>
 
                       <Field
                         className="form-control inputfield"
@@ -113,7 +113,7 @@ function Login() {
               }}
             </Formik>
             <div className="d-flex mt-3 justify-content-center">
-              <Link to="/forgot">
+              <Link to="/forgotpassword">
                 <p className="forgotpass mx-2">forgot password?</p>
               </Link>
               <Link to="/register" className="ac link">

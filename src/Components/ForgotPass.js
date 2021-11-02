@@ -49,7 +49,7 @@ function ForgotPass() {
           <Card.Body>
             <form>
               <div className="form-group">
-                <label for="email">Email</label>
+                <label htmlFor="email">Email</label>
                 <input
                   className="form-control"
                   name="email"

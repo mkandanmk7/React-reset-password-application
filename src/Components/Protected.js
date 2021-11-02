@@ -15,6 +15,11 @@ function Protected() {
               <h1>Welcome to Protected Page</h1>
             </div>
           </div>
+          <div className="row">
+            <Link to="/login">
+              <Button variant="info">Login</Button>
+            </Link>
+          </div>
         </div>
       ) : (
         <>

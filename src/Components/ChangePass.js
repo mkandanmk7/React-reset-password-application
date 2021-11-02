@@ -60,7 +60,7 @@ function ChangePass() {
           <Card.Body>
             <form>
               <div className="form-group">
-                <label for="email">New password</label>
+                <label htmlFor="email">New password</label>
                 <input
                   type="password"
                   className="form-control"
@@ -70,7 +70,7 @@ function ChangePass() {
                 />
               </div>
               <div className="form-group">
-                <label for="email">Confirm password</label>
+                <label htmlFor="email">Confirm password</label>
                 <input
                   type="password"
                   className="form-control"
