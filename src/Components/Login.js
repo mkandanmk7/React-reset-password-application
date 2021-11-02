@@ -22,10 +22,14 @@ function Login() {
       }
     );
     console.log(response);
+
     if (response.status === 200) {
-      window.localStorage.setItem("auth-token", response.data);
+      window.localStorage.setItem("auth-token", response.data.token);
+
       return true;
-    } else return false;
+    } else {
+      return false;
+    }
   };
 
   // signin Schema using yup
@@ -52,13 +56,20 @@ function Login() {
                 password: "",
               }}
               validationSchema={signInSchema}
-              onSubmit={(values) => {
+              onSubmit={async (values) => {
                 console.log(values);
-                let reset = sendLogin(values); //if status 200 returns true; else false
+                let reset = await sendLogin(values); //if status 200 returns true; else false
 
-                if (reset) console.log(log);
-                setLog(true);
-                histroy.push("/protected");
+                console.log(reset); //true or
+
+                if (reset) {
+                  console.log(log); //default false;
+                  setLog(true); //now true
+                  histroy.push("/protected");
+                } else {
+                  console.log("else in");
+                  histroy.push("/protected");
+                }
               }}
             >
               {() => {
@@ -109,6 +120,7 @@ function Login() {
                 New Here? Create Account
               </Link>
             </div>
+            {/* <div><p>Error is: {log}</p></div> */}
           </Card.Body>
         </Card>
       </div>

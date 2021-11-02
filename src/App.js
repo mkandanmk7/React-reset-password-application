@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import "./App.css";
+import ChangePass from "./Components/ChangePass";
 import ForgotPass from "./Components/ForgotPass";
 import Login from "./Components/Login";
 import Protected from "./Components/Protected";
@@ -22,8 +23,9 @@ function App() {
           <AppContext.Provider value={[log, setLog]}>
             <Route path="/protected" component={Protected} />
             <Route path="/login" component={Login} />
-            <Route exact path="/forgot" component={ForgotPass} />
+            <Route exact path="/forgotpassword" component={ForgotPass} />
             <Route exact path="/register" component={Register} />
+            <Route path="/resetpassword/:id/:token" component={ChangePass} />
             <Route exact path="/">
               <Redirect to="/login" />
             </Route>
