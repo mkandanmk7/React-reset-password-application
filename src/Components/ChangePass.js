@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 import axios from "axios";
 
@@ -86,6 +86,9 @@ function ChangePass() {
               <Button type="submit" onClick={handleSubmit}>
                 Change
               </Button>
+              <Link to="/login">
+                <Button variant="primary">Login</Button>
+              </Link>
               <div className="text-center">
                 <p>{info}</p>
               </div>
