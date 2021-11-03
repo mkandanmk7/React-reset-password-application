@@ -22,6 +22,7 @@ function Register() {
       );
       console.log(response);
       setInfo(response.data);
+
       return true;
     } catch (err) {
       console.log(err.response.data);
@@ -55,7 +56,8 @@ function Register() {
               validationSchema={signInSchema}
               onSubmit={(values, { resetForm }) => {
                 console.log(values);
-                let reset = createAccount(values);
+                createAccount(values);
+
                 resetForm();
               }}
             >
@@ -82,7 +84,7 @@ function Register() {
                     <div className="form-group mb-3">
                       <label htmlFor="email">Email</label>
                       <Field
-                        class="form-control link"
+                        className="form-control link"
                         id="email"
                         type="email"
                         name="email"
@@ -102,7 +104,7 @@ function Register() {
                         id="password"
                         name="password"
                       />
-                      <div class="error">
+                      <div className="error">
                         <ErrorMessage name="password" />
                       </div>
                     </div>
@@ -110,9 +112,8 @@ function Register() {
                       <Button type="submit" variant="success">
                         Create
                       </Button>
-                      <Button className="mx-2 " type="submit" variant="success">
+                      <Button className="mx-2 " variant="success">
                         <NavLink className="loginLink" to="/login">
-                          {" "}
                           Login
                         </NavLink>
                       </Button>

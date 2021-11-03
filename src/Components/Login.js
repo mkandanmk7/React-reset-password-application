@@ -44,7 +44,7 @@ function Login() {
 
   return (
     <>
-      <div className="bg-primary card-container">
+      <div className="bg-primary p-3 card-container">
         <Card className="card" border="secondary">
           <Card.Header className="text-center">
             <h4 className="text-dark">Login</h4>
@@ -104,7 +104,7 @@ function Login() {
                     </div>
 
                     <div className="d-flex justify-content-center">
-                      <Button type="submit" variant="primary">
+                      <Button type="submit" variant="success">
                         Log In
                       </Button>
                     </div>
@@ -112,6 +112,8 @@ function Login() {
                 );
               }}
             </Formik>
+          </Card.Body>
+          <Card.Footer>
             <div className="d-flex mt-3 justify-content-center">
               <Link to="/forgotpassword">
                 <p className="forgotpass mx-2">forgot password?</p>
@@ -121,7 +123,7 @@ function Login() {
               </Link>
             </div>
             {/* <div><p>Error is: {log}</p></div> */}
-          </Card.Body>
+          </Card.Footer>
         </Card>
       </div>
     </>

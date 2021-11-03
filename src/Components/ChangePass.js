@@ -5,7 +5,9 @@ import axios from "axios";
 
 function ChangePass() {
   const param = useParams();
+  console.log(param);
   const id = param.id;
+  console.log(id);
   const token = param.token;
 
   //states
@@ -30,7 +32,7 @@ function ChangePass() {
       setErr("ivalid password");
       return false;
     } else if (password !== password1) {
-      setErr("password donot matching");
+      setErr("password doesnot matching");
       return false;
     }
     try {
@@ -47,7 +49,7 @@ function ChangePass() {
       setInfo("Please log in again with the new password", res.data);
     } catch (err) {
       console.log(err);
-      setErr(err.res.data);
+      setErr("Error in reset");
     }
   };
   return (
@@ -60,7 +62,7 @@ function ChangePass() {
           <Card.Body>
             <form>
               <div className="form-group">
-                <label htmlFor="email">New password</label>
+                <label htmlFor="email">Set New password</label>
                 <input
                   type="password"
                   className="form-control"
