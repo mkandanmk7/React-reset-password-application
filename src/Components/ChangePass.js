@@ -35,9 +35,10 @@ function ChangePass() {
       setErr("password doesnot matching");
       return false;
     }
+    console.log("next try");
     try {
       const res = await axios.post(
-        `https://reset-password-muthu.herokuapp.com/resetpassword/${id}/${token}`,
+        `https://nodejs-reset-password.herokuapp.com/resetpassword/${id}/${token}`,
         {
           password: password,
         }
