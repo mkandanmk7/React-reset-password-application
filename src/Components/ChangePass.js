@@ -36,7 +36,7 @@ function ChangePass() {
       return false;
     }
     try {
-      const res = await axios.post(
+      const res = await axios.put(
         `https://reset-password-muthu.herokuapp.com/resetpassword/${id}/${token}`,
         {
           password: password,
